@@ -1,12 +1,12 @@
 resource "azurerm_resource_group" "workspace_rg" {
-  name     = "workspace_rg_01"
+  name     = "rg-${var.product_name}-${var.product_id}"
   location = "West Europe"
 }
 
 module "dbx_workspace" {
   source                = "../modules/databricks"
-  dbx_workspace_name    = "pilot-dbx-rg-ws-01"
-  access_connector_name = "pilot-dbx-rg-ac-01"
+  dbx_workspace_name    = "dbx-ws-${var.product_name}-${var.product_id}"
+  access_connector_name = "dbx-ac-${var.product_name}-${var.product_id}"
   resource_group_name   = azurerm_resource_group.workspace_rg.name
 }
 
@@ -17,7 +17,7 @@ module "function_app" {
 
 module "storage" {
   source               = "../modules/storage"
-  storage_account_name = "pilotstrg01"
+  storage_account_name = "adls${replace(var.product_name, "-", "")}${var.product_id}"
   resource_group_name  = azurerm_resource_group.workspace_rg.name
   role_assignments = [
     {
