@@ -1,0 +1,13 @@
+apiVersion: infra.contrib.fluxcd.io/v1alpha2
+kind: Terraform
+metadata:
+  name: gitops-tech-platform
+  namespace: flux-system
+spec:
+  interval: 1m
+  approvePlan: auto
+  path: ./terraform
+  sourceRef:
+    kind: GitRepository
+    name: gitops-tech-platform
+    namespace: flux-system
