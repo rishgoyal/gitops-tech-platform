@@ -15,8 +15,8 @@ spec:
   runnerPodTemplate:
     spec:
       envFrom:
-      - secretRef:
-          name: azure-tf-creds
+        - secretRef:
+            name: azure-tf-creds
       # env:
       # - name: ARM_CLIENT_ID
       #   valueFrom:
