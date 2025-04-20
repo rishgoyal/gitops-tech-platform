@@ -15,9 +15,6 @@ module "storage" {
   resource_group_name  = azurerm_resource_group.workspace_rg.name
   role_assignments = [
     {
-      principal_id = module.dbx_workspace.dbx_access_connector_id
-    },
-    {
       principal_id = module.function_app.function_app_identity
     },
   ]
