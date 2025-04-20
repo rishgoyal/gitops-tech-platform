@@ -3,12 +3,6 @@ resource "azurerm_resource_group" "workspace_rg" {
   location = "West Europe"
 }
 
-module "dbx_workspace" {
-  source                = "../modules/databricks"
-  dbx_workspace_name    = "dbx-ws-${var.product_name}-${var.product_id}"
-  access_connector_name = "dbx-ac-${var.product_name}-${var.product_id}"
-  resource_group_name   = azurerm_resource_group.workspace_rg.name
-}
 
 module "function_app" {
   source              = "../modules/functions"
