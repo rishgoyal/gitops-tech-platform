@@ -40,10 +40,10 @@ terraform {
 
 provider "azurerm" {
   # Configuration options
-  subscription_id     = var.subscription_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
-  tenant_id       = var.tenant_id
+  subscription_id = var.ARM_SUBSCRIPTION_ID
+  client_id       = var.ARM_CLIENT_ID
+  client_secret   = var.ARM_CLIENT_SECRET
+  tenant_id       = var.ARM_TENANT_ID
   storage_use_azuread = true
   features {}
   

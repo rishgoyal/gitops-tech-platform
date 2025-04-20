@@ -8,3 +8,5 @@ spec:
   url: https://github.com/rishgoyal/gitops-tech-platform
   ref:
     branch: main
+  secretRef:
+    name: gitopstechplatform-auth
