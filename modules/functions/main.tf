@@ -29,3 +29,20 @@ resource "azurerm_linux_function_app" "func_app" {
   }
   site_config {}
 }
+
+resource "azurerm_linux_function_app" "func_app" {
+  for_each = toset(var.function_app_names)
+
+  name                = each.value
+  resource_group_name = var.resource_group_name
+  location            = "West Europe"
+
+  storage_account_name          = azurerm_storage_account.func_storage.name
+  storage_uses_managed_identity = true
+  service_plan_id               = azurerm_service_plan.func_service_plan.id
+
+  identity {
+    type = "SystemAssigned"
+  }
+  site_config {}
+}
