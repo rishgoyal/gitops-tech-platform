@@ -4,7 +4,7 @@ metadata:
   name: gitops-tech-platform
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 2m
   destroy: true
   approvePlan: "auto"
   path: ./terraform
