@@ -1,0 +1,24 @@
+apiVersion: infra.contrib.fluxcd.io/v1alpha2
+kind: Terraform
+metadata:
+  name: gitops-tech-platform
+  namespace: flux-system
+spec:
+  interval: 10m
+  destroy: true
+  approvePlan: "auto"
+  path: ./terraform
+  sourceRef:
+    kind: GitRepository
+    name: gitops-tech-platform
+    namespace: flux-system
+  vars:
+    - name: product_id
+      value: "001"
+    - name: product_name
+      value: "sales-kpi"
+  runnerPodTemplate:
+    spec:
+      envFrom:
+        - secretRef:
+            name: azure-tf-creds
