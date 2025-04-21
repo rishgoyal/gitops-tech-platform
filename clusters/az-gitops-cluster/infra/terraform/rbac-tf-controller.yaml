@@ -1,0 +1,22 @@
+# RBAC for Service Account for TF Controller to create Repo in Flux System Namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tf-controller-source-permissions
+rules:
+- apiGroups: ["source.toolkit.fluxcd.io"]
+  resources: ["gitrepositories"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tf-controller-source-binding
+subjects:
+- kind: ServiceAccount
+  name: tf-controller
+  namespace: flux-system
+roleRef:
+  kind: ClusterRole
+  name: tf-controller-source-permissions
+  apiGroup: rbac.authorization.k8s.io
