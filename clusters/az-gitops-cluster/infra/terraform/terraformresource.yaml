@@ -5,10 +5,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 2m
-  destroy: true
-  approvePlan: "auto"
-  path: ./terraform
+  # destroy: true
+  approvePlan: auto
   storeReadablePlan: human
+  path: ./terraform
   sourceRef:
     kind: GitRepository
     name: gitops-tech-platform
