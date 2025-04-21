@@ -8,6 +8,7 @@ spec:
   destroy: true
   approvePlan: "auto"
   path: ./terraform
+  storeReadablePlan: human
   sourceRef:
     kind: GitRepository
     name: gitops-tech-platform
