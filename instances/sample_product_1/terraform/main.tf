@@ -5,13 +5,13 @@ resource "azurerm_resource_group" "workspace_rg" {
 
 
 module "function_app" {
-  source              = "../modules/functions"
+  source              = "../../../tf_modules/functions"
   resource_group_name = azurerm_resource_group.workspace_rg.name
   function_app_names  = ["ingest001sales", "transform001sales", "export001sales"]
 }
 
 module "storage" {
-  source               = "../modules/storage"
+  source               = "../../../tf_modules/storage"
   storage_account_name = "adls${replace(var.product_name, "-", "")}${var.product_id}"
   resource_group_name  = azurerm_resource_group.workspace_rg.name
   role_assignments = [
